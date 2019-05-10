@@ -74,21 +74,15 @@ int _write( int file, char *ptr, int len )
 }
 
 /* USER CODE BEGIN 0 */
-
-
-//static ai_handle network = AI_HANDLE_NULL;
-
-
 static struct ai_network_exec_ctx {
    ai_handle network;
    ai_network_report report;
 } net_exec_ctx[AI_MNETWORK_NUMBER] = {0};
 
-
 static int aiBootstrap(const char *nn_name, const int idx)
 {
     ai_error err;
-
+	
     /* Creating the network */
     printf("Creating the network \"%s\"..\r\n", nn_name);
     err = ai_mnetwork_create(nn_name, &net_exec_ctx[idx].network, NULL);
@@ -130,7 +124,6 @@ static int aiBootstrap(const char *nn_name, const int idx)
     return 0;
 }
 
-
 int aiInit(void)
 {
     int res = -1;
@@ -158,7 +151,6 @@ int aiInit(void)
     return 0;
 }
 
-
 void aiDeinit(void)
 {
 	ai_error err;
@@ -177,7 +169,6 @@ void aiDeinit(void)
 		}
 	}
 }
-
 
 int aiRun(const int idx, const ai_float *in_data, ai_float *out_data)
 {
@@ -210,8 +201,6 @@ int aiRun(const int idx, const ai_float *in_data, ai_float *out_data)
     return 0;
 }
 
-
-
 void aiTest(void)
 {
 
@@ -222,8 +211,6 @@ void aiTest(void)
     aiRun(0,in_data, out_data);
     printf("IN0: %f, IN1: %f, OUT: %f \n\r",in_data[0],in_data[1],round(out_data[0]));
     while(1);
-
-
 }
 
 /* USER CODE END 0 */
@@ -274,7 +261,7 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-  MX_X_CUBE_AI_Process();
+  　MX_X_CUBE_AI_Process();
     /* USER CODE BEGIN 3 */
     aiTest();
   }
