@@ -214,22 +214,16 @@ int aiRun(const int idx, const ai_float *in_data, ai_float *out_data)
 
 void aiTest(void)
 {
-    int nb_run = 20;
+
     aiInit();
+    in_data[0]=1.0;
+    in_data[1]=0.0;
 
-    while (--nb_run) {
+    aiRun(0,in_data, out_data);
+    printf("IN0: %f, IN1: %f, OUT: %f \n\r",in_data[0],in_data[1],round(out_data[0]));
+    while(1);
 
-        /* fill a float array with random data in the range [-1, 1] */
-    	in_data[0]=1.0;
-    	in_data[1]=0.0;
 
-        /* perform an inference */
-        aiRun(0,in_data, out_data);
-        printf("IN0: %f, IN1: %f, OUT: %f \n\r",in_data[0],in_data[1],round(out_data[0]));
-        while(1);
-
-        HAL_Delay(100);
-    }
 }
 
 /* USER CODE END 0 */
